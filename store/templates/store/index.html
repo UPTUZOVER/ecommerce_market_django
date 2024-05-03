@@ -1,0 +1,76 @@
+{% extends 'store/layouts/main.html' %}
+
+{% block content %}
+{% include 'store/inc/slider.html' %}
+
+
+<div class="container">
+    <div class="row">
+        {% comment %} <div class="col-md-12"> {% endcomment %}
+            <div class="row">
+                <h1>Trending Products</h1>
+                <hr>        
+                {% for item in trending_products %}
+                
+                    <div class="col-md-3">
+                        <div class="card">    
+                            <div class="card-body">
+                                <a href="{% url 'productview' item.category.slug item.slug %}">
+
+                                    <div class="category-images">
+                                        <img src="{{ item.product_image.url }}"  class="img" height="280px" width="250px" style="object-fit: contain;" alt="catygory-images">
+                                    </div>
+                                    <h4 class = "text-center" >{{ item.name }}</h4>
+                                </a>
+                                <span class="text-start">{{ item.selling_price }}</span>
+                                <span  class="text-end" mb-2>
+                                    {% if item.quantity > 0 %}
+                                        <button type="button" class="btn btn-primary btn-sm me-3 float-start addToCartBtn"> Add to Cart <i style="font-size: 20px;" class='bx bx-cart'></i></button>
+                                    {% else %}
+                                        <button type="button" class="btn btn-danger btn-sm me-3 float-start ">Out to Cart<i style="font-size: 20px;" class='bx bx-cart'></i></button>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                    </div> 
+            
+                {% endfor %}
+
+            </div>    
+            {% comment %} </div> {% endcomment %}
+        </div>
+    </div>
+</div>
+
+<h1>salom world</h1>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
